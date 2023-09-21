@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/teoria-de-grafos.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>CaminosConexos</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <img class="logo" src="{{ url_for('static', filename='images/teoria-de-grafos.png') }}">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Componentes conexas de un grafo</h1>
+        <br>
+        
+        <form method="POST" action="/procesar_matriz">
+            <label for="n">Tamaño de la matriz cuadrada(5-15):</label>
+            <br> <br>
+            <input type="number" id="n" name="n" min="5" max="15" required>
+            <br> <br>
+            <input type="submit" value="Generar Matriz">
+        </form>
+        <br> <br>
+        {% if matriz_generada %}
+        <h2>Matriz Generada:</h2>
+        <table border="1">
+            {% for row in matriz_generada %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        
+        <br> <br>
+
+        {% if matriz_unos_diagonal %}
+        <h2>Matriz con Unos en la Diagonal:</h2>
+        <table border="1">
+            {% for row in matriz_unos_diagonal %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        <br> <br>
+        
+        {% if matriz_caminos %}
+        <h2>Matriz de Caminos:</h2>
+        <table border="1">
+            {% for row in matriz_caminos %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Grupo 02</p>
+    </footer>
+</body>
+</html>
